@@ -1,81 +1,76 @@
-var search = document.querySelector("#search");
-var sumbit = document.querySelector("#sumbit");
-var Data = document.querySelector("#Data");
+<!DOCTYPE html>
+<html lang="en">
 
-var today = new Date();
-var day = today.getDate();
-var dayIndex = today.getDay();
-var monthIndex = today.getMonth();
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+  <link rel="stylesheet" href="CSS/index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
 
-var daysEnglish = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var monthsEnglish = ["January", "February", "March", "April", "May", "June", "July",
-                     "August", "September", "October", "November", "December"];
+<body>
+  <main>
+    <nav class="navbar navbar-expand-md fixed-top bg-transparent navbar-dark fs-5 pt-4">
+      <div class="container mt-3">
+        <img src="Weather/imgi_1_logo@2x.png" alt="" class="navbar-img" />
+        <div class="text d-flex flex-column ps-3">
+          <h1 class="site-title text-white">Weather</h1>
+          <small class="site-desc">tagline goes here</small>
+        </div>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-var monthName = monthsEnglish[monthIndex];
-var dayName = daysEnglish[dayIndex];
-var two_day = daysEnglish[(dayIndex + 1) % 7];
-var three_day = daysEnglish[(dayIndex + 2) % 7];
-
-function getdata(city) {
-  fetch(`https://api.weatherapi.com/v1/forecast.json?key=7adfa5c8c1bd4a2f944160254250107&q=${city}&days=3`)
-    .then(res => res.json())
-    .then(data => {
-      display(data);
-      localStorage.setItem("weather", JSON.stringify(data));
-    })
-    .catch(err => {
-      console.log("Error:", err);
-      Data.innerHTML = `<p class="text-white">City not found or API error.</p>`;
-    });
-}
-
-sumbit.addEventListener("click", function () {
-  getdata(search.value);
-});
-
-function display(data) {
-  var cartoona = `
-    <div class="box col-md-4 p-5 rounded-2">
-      <div class="head d-flex justify-content-between rounded-1">
-        <div>${dayName}</div>
-        <div>${day} ${monthName}</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-6">
+            <li class="nav-item px-5">
+              <a class="nav-link active" href="">Home</a>
+            </li>
+            <li class="nav-item px-4"><a class="nav-link" href="">News</a></li>
+            <li class="nav-item px-4"><a class="nav-link" href="">Live cameras</a></li>
+            <li class="nav-item px-4"><a class="nav-link" href="">Photos</a></li>
+            <li class="nav-item px-4"><a class="nav-link" href="">Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <h6 class="text-white location py-2">${data.location.name}</h6>
-      <h1 class="text-white degree">${data.current.temp_c}℃</h1>
-      <img src="https:${data.current.condition.icon}" alt="">
-      <span class="text-info">${data.current.condition.text}</span>
-      <div class="icons">
-        <span class="px-2"><img src="Weather/imgi_3_icon-umberella.png" alt=""><small class="text-white">${data.current.humidity}%</small></span>
-        <span class="px-2"><img src="Weather/imgi_4_icon-wind.png" alt=""><small class="text-white">${data.current.wind_kph} km/h</small></span>
-        <span class="px-2"><img src="Weather/imgi_5_icon-compass.png" alt=""><small class="text-white">${data.current.wind_dir}</small></span>
+    </nav>
+
+    <div class="box_image position-relative">
+      <img src="Weather/imgi_7_banner.png" class="w-100" alt="" />
+    </div>
+
+    <div class="container">
+      <input type="text" placeholder="Find your location"
+        class="form-control position-absolute start-50 bottom-50 end-50 translate-middle w-75 p-3"
+        id="search" />
+      <div class="click position-absolute end-50">
+        <input type="button" value="Find" id="sumbit" class="rounded-5" />
       </div>
     </div>
 
-    <div class="box2 col-md-4 p-5 rounded-2">
-      <div class="head d-flex justify-content-center rounded-1"><div>${two_day}</div></div>
-      <div class="data d-flex align-items-center flex-md-column py-5">
-        <img src="https:${data.forecast.forecastday[1].day.condition.icon}" alt="">
-        <h1 class="text-white degree">${data.forecast.forecastday[1].day.avgtemp_c}℃</h1>
-        <span class="text-info text-center">${data.forecast.forecastday[1].day.condition.text}</span>
-      </div>
+    <div class="container position-absolute translate-middle start-50" id="data">
+      <div class="row" id="Data"></div>
     </div>
+  </main>
 
-    <div class="box3 col-md-4 p-5 rounded-2">
-      <div class="head d-flex justify-content-center rounded-1"><div>${three_day}</div></div>
-      <div class="data d-flex align-items-center flex-md-column py-5">
-        <img src="https:${data.forecast.forecastday[2].day.condition.icon}" alt="">
-        <h1 class="text-white degree">${data.forecast.forecastday[2].day.avgtemp_c}℃</h1>
-        <span class="text-info text-center">${data.forecast.forecastday[2].day.condition.text}</span>
-      </div>
+  <footer class="py-5 d-flex align-items-center">
+    <div class="container ps-4">
+      <input type="text" placeholder="Find your location" class="form-control p-3 w-50 my-4" />
+      <p>Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
     </div>
-  `;
+    <ul class="social-link list-unstyled d-flex gap-5 mb-0 px-5">
+      <li><a href="#"><i class="fab fa-facebook-f fs-4"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter fs-4"></i></a></li>
+      <li><a href="#"><i class="fab fa-google fs-4"></i></a></li>
+      <li><a href="#"><i class="fab fa-pinterest fs-4"></i></a></li>
+    </ul>
+  </footer>
 
-  Data.innerHTML = cartoona;
-}
+  <script src="JS/index.js"></script>
+</body>
 
-window.addEventListener("load", function () {
-  var saved = localStorage.getItem("weather");
-  if (saved) {
-    display(JSON.parse(saved));
-  }
-});
+</html>
