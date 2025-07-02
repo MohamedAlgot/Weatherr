@@ -75,7 +75,7 @@ main {
 }
 
 .form-control:focus {
-  background-color: #1e202b;
+  background-color:white;
   border-color: #4e6280;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
