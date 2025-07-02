@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <main>
+        <nav class="navbar navbar-expand-md fixed-top bg-transparent navbar-dark fs-5 pt-4">
+            <div class="container mt-3">
+                <img src="./Weather/imgi_1_logo@2x.png" alt="" class="navbar-img">
+                <div class="text d-flex flex-column ps-3">
+                    <h1 class="site-title text-white">Weather</h1>
+                    <small class="site-desc">tagline goes here</small>
+                </div>
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-6">
+                        <li class="nav-item px-5">
+                            <a class="nav-link active" aria-current="page" href="">Home</a>
+                        </li>
+
+                        <li class="nav-item px-4">
+                            <a class="nav-link" href="">News</a>
+                        </li>
+
+                        <li class="nav-item px-4">
+                            <a class="nav-link" href="">Live cameras</a>
+                        </li>
+
+                        <li class="nav-item px-4">
+                            <a class="nav-link" href="">Photos</a>
+                        </li>
+
+                        <li class="nav-item px-4">
+                            <a class="nav-link" href="">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+        <div class="box_image position-relative">
+            <img src="./Weather/imgi_7_banner.png" class="w-100 " alt="">
+        </div>
+        <div class="container">
+
+            <input type="text" placeholder="Find your location"
+                class="form-control position-absolute  start-50 bottom-50 end-50 translate-middle w-75 p-3 position-relative"
+                id="search">
+
+            <div class="click position-absolute  end-50   ">
+                <input type="button" value="Find" id="sumbit" class=" rounded-5">
+
+            </div>
+
+        </div>
+        <div class="container position-absolute translate-middle  start-50" id="data">
+            <div class="row" id="Data">
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <footer class="py-5 d-flex align-items-center">
+        <div class="container  ps-4">
+
+            <input type="text" placeholder="Find your location" class="form-control p-3 w-50  my-4">
+            <p>Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+        </div>
+        <ul class="social-link list-unstyled d-flex gap-5 mb-0 px-5">
+            <li><a href="#"><i class="fab fa-facebook-f fs-4"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter fs-4"></i></a></li>
+            <li><a href="#"><i class="fab fa-google fs-4"></i></a></li>
+            <li><a href="#"><i class="fab fa-pinterest fs-4"></i></a></li>
+        </ul>
+
+    </footer>
+
+
+
+
+    <script src="./JS/index.js"></script>
+</body>
+
+</html>
